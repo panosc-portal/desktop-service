@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>desktop-service</artifactId>
+        <groupId>eu.panosc.portal</groupId>
+        <version>0.0.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>business</artifactId>
+
+    <properties>
+        <okhttp.version>3.8.1</okhttp.version>
+    </properties>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>eu.panosc.portal</groupId>
+            <artifactId>core</artifactId>
+            <version>0.0.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>eu.panosc.portal</groupId>
+            <artifactId>persistence</artifactId>
+            <version>0.0.0-SNAPSHOT</version>
+        </dependency>
+
+    </dependencies>
+
+
+</project>

@@ -1,0 +1,54 @@
+server:
+  applicationConnectors:
+    - type: http
+      port: ${DESKTOP_SERVICE_SERVER_PORT:-8085}
+      bindHost: ${DESKTOP_SERVICE_SERVER_HOST:-'localhost'}
+  adminConnectors: []
+  rootPath: '/api/*'
+
+database:
+  driverClass: org.postgresql.Driver
+  user: ${DESKTOP_SERVICE_DATABASE_USERNAME}
+  password: ${DESKTOP_SERVICE_DATABASE_PASSWORD}
+  url: ${DESKTOP_SERVICE_DATABASE_URL}
+  properties:
+    charSet: UTF-8
+    hibernate.show_sql: false
+    hibernate.hbm2ddl.auto: update
+    hibernate.connection.useSSL: false
+    hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate.enable_lazy_load_no_trans: true
+  # the maximum amount of time to wait on an empty pool before throwing an exception
+  maxWaitForConnection: 1s
+  # the SQL query to run when validating a session's liveness
+  validationQuery: "SELECT 1"
+  # the timeout before geda session validation queries fail
+  validationQueryTimeout: 3s
+  # the minimum identifier of connections to keep open
+  minSize: 8
+  # the maximum identifier of connections to keep open
+  maxSize: 32
+  # whether or not idle connections should be validated
+  checkConnectionWhileIdle: true
+  # the amount of time to sleep between runs of the idle session validation, abandoned cleaner and idle pool resizing
+  evictionInterval: 10s
+  # the minimum amount of time an session must sit idle in the pool before it is eligible for eviction
+  minIdleTime: 1 minute
+
+logging:
+  level: INFO
+  loggers:
+    org.apache.guacamole: DEBUG
+    io.dropwizard: INFO
+    eu.panosc.portal: INFO
+  appenders:
+    - type: console
+      logFormat: "%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) [%-40.40logger{10}] - %msg%n"
+
+vdi:
+  host: ${DESKTOP_SERVICE_HOST:-'localhost'}
+  port: ${DESKTOP_SERVICE_PORT:-8087}
+  enabled: ${DESKTOP_SERVICE_ENABLED:-true}
+
+cloud:
+  cloudServiceEndpoint: ${DESKTOP_SERVICE_CLOUD_SERVICE_URL}
