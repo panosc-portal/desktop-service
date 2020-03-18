@@ -46,9 +46,9 @@ logging:
       logFormat: "%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) [%-40.40logger{10}] - %msg%n"
 
 vdi:
-  host: ${DESKTOP_SERVICE_HOST:-'localhost'}
-  port: ${DESKTOP_SERVICE_PORT:-8087}
-  enabled: ${DESKTOP_SERVICE_ENABLED:-true}
+  host: ${DESKTOP_SERVICE_VDI_HOST:-'localhost'}
+  port: ${DESKTOP_SERVICE_VDI_PORT:-8087}
+  enabled: ${DESKTOP_SERVICE_VDI_ENABLED:-true}
 
 cloud:
   cloudServiceEndpoint: ${DESKTOP_SERVICE_CLOUD_SERVICE_URL}
