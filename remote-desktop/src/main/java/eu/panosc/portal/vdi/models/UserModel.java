@@ -7,7 +7,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 public class UserModel {
 
     private Long   id;
-    private String fullName;
+    private String email;
     private String role;
 
     public UserModel() {
@@ -17,7 +17,7 @@ public class UserModel {
     public UserModel(final InstanceMember member) {
         final User user = member.getUser();
         this.id = user.getId();
-        this.fullName = user.getFullName();
+        this.email = user.getEmail();
         this.role = member.getRole().toString();
     }
 
@@ -29,12 +29,12 @@ public class UserModel {
         this.id = id;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getEmail() {
+        return email;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getRole() {
@@ -49,7 +49,7 @@ public class UserModel {
     public String toString() {
         return new ToStringBuilder(this)
             .append("id", id)
-            .append("fullName", fullName)
+            .append("email", email)
             .append("role", role)
             .toString();
     }

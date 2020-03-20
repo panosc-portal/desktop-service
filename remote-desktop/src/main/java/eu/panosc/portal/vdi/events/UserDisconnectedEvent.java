@@ -12,7 +12,7 @@ public class UserDisconnectedEvent {
 
     public UserDisconnectedEvent(final SocketIOClient client, final BroadcastOperations operations) {
         final Connection connection = client.get("connection");
-        logger.info("Disconnected: {}", connection.getUser().getFullName());
+        logger.info("User disconnected: id:{}, email:{}", connection.getUser().getId(), connection.getUser().getEmail());
         client.leaveRoom(connection.getRoom());
 
         operations.sendEvent("user:disconnected", connection.getUser());
