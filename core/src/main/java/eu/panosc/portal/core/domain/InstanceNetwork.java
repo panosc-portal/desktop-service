@@ -26,4 +26,8 @@ public class InstanceNetwork {
     public Integer getPort(String protocolName) {
         return this.protocols.stream().filter(protocol -> protocol.getName().equals(protocolName)).map(Protocol::getPort).findFirst().orElse(null);
     }
+
+    public Integer getInternalPort(String protocolName) {
+        return this.protocols.stream().filter(protocol -> protocol.getName().equals(protocolName)).map(Protocol::getInternalPort).findFirst().orElse(null);
+    }
 }

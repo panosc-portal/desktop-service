@@ -57,13 +57,17 @@ public class ConnectionRequestService {
 
         final GuacamoleConfiguration config = new GuacamoleConfiguration();
         Integer guacdPort = network.getPort("GUACD");
-        // TODO get internal RDP port
+        Integer rdpPort = network.getInternalPort("RDP");
         if (guacdPort == null) {
             throw new RemoteDesktopException("Instance does not support GUACD protocols");
         }
+        if (rdpPort == null) {
+            // Set to default value if not obtained from the network information
+            rdpPort = 3389;
+        }
         config.setProtocol("rdp");
         config.setParameter("hostname", "localhost");
-        config.setParameter("port", "3389");
+        config.setParameter("port",rdpPort.toString());
 
         // Verify again that the instance member is the owner
         if (session != null) {
