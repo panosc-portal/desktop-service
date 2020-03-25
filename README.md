@@ -40,7 +40,7 @@ The following environment variables are user to configure the Desktop Service:
 | Environment variable | Default value | Usage |
 | ---- | ---- | ---- |
 | DESKTOP_SERVICE_SERVER_HOST | localhost | The host the rest API server listens to (currently unused)|
-| DESKTOP_SERVICE_SERVER_PORT | 8087 | The port of the rest API server (currently unused) |
+| DESKTOP_SERVICE_SERVER_PORT | 8085 | The port of the rest API server (currently unused) |
 | DESKTOP_SERVICE_VDI_HOST | localhost | The host the web socket listens to |
 | DESKTOP_SERVICE_VDI_PORT | 8087 | The port of the web socket |
 | DESKTOP_SERVICE_DATABASE_USERNAME | | The database username |
