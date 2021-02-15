@@ -23,16 +23,15 @@ public class CloudService {
 
     private final HttpClient httpClient = new OkHttpClientAdapter();
     private ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-    private final String cloudServiceEndpoint;
 
     public CloudService(String cloudServiceEndpoint) {
-        this.cloudServiceEndpoint = cloudServiceEndpoint;
+        // cloudServiceEndpoint not used anymore, kept for compatibility purposes
     }
 
-    public InstanceAuthorisation validateToken(Integer instanceId, String token) {
+    public InstanceAuthorisation validateToken(Integer instanceId, String token, String cloudServiceEndpoint) {
 
         try {
-            final String url = format("%s/instances/%d/token/%s/validate", this.cloudServiceEndpoint, instanceId, token);
+            final String url = format("%s/instances/%d/token/%s/validate", cloudServiceEndpoint, instanceId, token);
 
             final HttpResponse response = httpClient.sendRequest(url, HttpMethod.GET);
             if (response.isSuccessful()) {

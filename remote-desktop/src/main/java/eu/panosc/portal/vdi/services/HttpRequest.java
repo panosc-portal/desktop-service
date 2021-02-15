@@ -47,4 +47,8 @@ public class HttpRequest {
         }
         return value;
     }
+
+    public String getStringHeader(final String key) {
+        return this.handshakeData.getHttpHeaders().get(key);
+    }
 }

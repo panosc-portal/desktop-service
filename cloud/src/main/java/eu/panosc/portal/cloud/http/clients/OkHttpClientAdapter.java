@@ -23,11 +23,11 @@ public class OkHttpClientAdapter implements HttpClient {
         if (headers == null) {
             return headersBuilder.build();
         }
-        final Iterator entries = headers.entrySet().iterator();
+        final Iterator<Entry<String, String>> entries = headers.entrySet().iterator();
         while (entries.hasNext()) {
-            Entry  header = (Entry) entries.next();
-            String key    = (String) header.getKey();
-            String value  = (String) header.getValue();
+            Entry<String, String>  header = entries.next();
+            String key    = header.getKey();
+            String value  = header.getValue();
             headersBuilder.add(key, value);
         }
         return headersBuilder.build();

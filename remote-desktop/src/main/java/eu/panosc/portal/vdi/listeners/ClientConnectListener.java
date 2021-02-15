@@ -26,6 +26,7 @@ public class ClientConnectListener extends AbstractListener implements ConnectLi
     private final static String INSTANCE_ID_PARAMETER = "instanceId";
     private final static String SCREEN_WIDTH_PARAMETER = "screenWidth";
     private final static String SCREEN_HEIGHT_PARAMETER = "screenHeight";
+    private final static String GATEWAY_HOST_HEADER = "Gateway-host";
 
     private final CloudService cloudService;
     private final InstanceSessionService instanceSessionService;
@@ -42,6 +43,8 @@ public class ClientConnectListener extends AbstractListener implements ConnectLi
     private InstanceAuthorisation validateToken(final HttpRequest request) {
         final String token = request.getStringParameter(TOKEN_PARAMETER);
         final Integer instanceId = request.getIntegerParameter(INSTANCE_ID_PARAMETER);
+        final String gatewayHost = "http://" + request.getStringHeader(GATEWAY_HOST_HEADER) + "/cloud-service/api/v1";
+        
         if (token == null) {
             logger.warn("Authorisation token not sent in the request");
             return null;
@@ -50,7 +53,7 @@ public class ClientConnectListener extends AbstractListener implements ConnectLi
             logger.warn("Instance ID not sent in the request");
             return null;
         }
-        final InstanceAuthorisation instanceAuthorisation = cloudService.validateToken(instanceId, token);
+        final InstanceAuthorisation instanceAuthorisation = cloudService.validateToken(instanceId, token, gatewayHost);
         if (instanceAuthorisation == null) {
             logger.warn("Cannot get instance Authorisation for instance {}", instanceId);
         }

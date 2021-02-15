@@ -5,7 +5,7 @@ PaNOSC Portal Desktop Service
 
 The Desktop Service is a micro-service of the PaNOSC Common Portal.
 
-The Desktop service acts as a relay between the [Apache Gaucamole](https://guacamole.apache.org) guacd service on a running instance and a web-socket to the browser client.
+The Desktop service acts as a relay between the [Apache Guacamole](https://guacamole.apache.org) guacd service on a running instance and a web-socket to the browser client.
 
 Both *guacd* and web-socket connections are managed by this service. A client connects to an instance by providing an instance ID and a time-limited access token. 
 It uses the Cloud Service to validate the access token and obtain the IP and Port of the *guacd* server.  
