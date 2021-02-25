@@ -48,4 +48,3 @@ The following environment variables are user to configure the Desktop Service:
 | DESKTOP_SERVICE_DATABASE_URL | | The database URL |
 | DESKTOP_SERVICE_CLOUD_SERVICE_URL | | The Cloud Service URL |
 
- 
